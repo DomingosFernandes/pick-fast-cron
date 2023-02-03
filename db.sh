@@ -1,0 +1,1 @@
+docker run -p 27017:27017 -itd --name pick-fast-db -v pick-fast-data:/data/db --rm mongo:5.0
