@@ -14,17 +14,19 @@ export async function fetchRequest(url: RequestInfo, options: RequestInit = {}):
 }   
 
 export async function stratzRequest(fetchQuery: { query: string, variables: Record<string, any>}) {
-    const fetchOptions = {
-        method: 'POST',
-        body: JSON.stringify(fetchQuery),
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${constants.stratz_token}`
+    try {
+        const fetchOptions = {
+            method: 'POST',
+            body: JSON.stringify(fetchQuery),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${constants.stratz_token}`
+            }
         }
+        const result: any = await fetchRequest(constants.stratz_endpoint, fetchOptions);
+        return result.data;
     }
-
-    //TODO: Update this type
-    const result: any = await fetchRequest(constants.stratz_endpoint, fetchOptions);
-
-    return result.data;
+    catch (err: any) {
+        throw new Error(err);
+    }
 }

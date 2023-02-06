@@ -1,4 +1,4 @@
-import { sampleSize, shuffle } from "lodash";
+import { sampleSize, shuffle } from "lodash-es";
 import { ProcessedMatch, ProcessedPlayer, Question } from "../models/Game.js";
 import { HeroInfo } from "../models/Hero.js";
 import { MatchDetails } from "../models/Match.js";
@@ -70,6 +70,12 @@ export function processMatchesForQuestions(listOfMatches: ProcessedMatch[], hero
         const lastPickIndex = players.length - 1;
         const otherPicks = players.slice(0, lastPickIndex);
         const lastPick = players[lastPickIndex];
+
+        //This means the last pick had a low contribution to their team's win
+        if (lastPick.imp < 0) return listAcc;
+
+        //This means the last team to pick did not win the game 
+        if (lastPick.isRadiant !== matchPlayed.radiantWin) return listAcc;
 
         //Add the last hero that was actually picked
         const options = [{ heroId: lastPick.heroId, wasPicked: true, name: lastPick.name, local: lastPick.local }];

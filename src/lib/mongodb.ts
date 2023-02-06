@@ -3,8 +3,10 @@ import constants from "./constants.js";
 
 const client = new MongoClient(constants.mongodb_uri, {});
 
-export async function addGameDocuments(documents: any) {
+export async function addGameDocuments(documents: any[]) {
     try {
+        if (documents.length === 0) throw new Error("Invalid Add Operation, List cannot be empty");
+
         await client.connect();
 
         const pickFastDb = client.db('pick_fast');

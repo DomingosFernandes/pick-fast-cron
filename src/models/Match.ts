@@ -4,7 +4,7 @@ export type MatchReport = {
     radiant_win: boolean
     start_time: number
     duration: number
-    avg_mmr: number
+    avg_mmr: number 
     num_mmr: number
     lobby_type: number
     game_mode: number
@@ -29,6 +29,7 @@ export type MatchDetails = {
     role: string
     position: string
     isRadiant: boolean
+    imp: number
   }
   
   export interface PickBan {

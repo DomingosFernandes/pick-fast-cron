@@ -8,5 +8,5 @@ export default {
     format: 'es'
   },
   plugins: [typescript()],
-  external: ['node-fetch', 'bottleneck', 'mongodb', 'dotenv', 'lodash'],
+  external: ['node-fetch', 'mongodb', 'dotenv', 'lodash-es'],
 };

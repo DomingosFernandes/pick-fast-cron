@@ -13,7 +13,8 @@ export type ProcessedPlayer =  {
     name: string;
     local: string;
     order: number;
-    position: number
+    position: number;
+    imp: number;
 }
 
 export type Question = {

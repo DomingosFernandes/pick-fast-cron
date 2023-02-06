@@ -10,7 +10,8 @@ export const getMatchesQuery = (ids: Array<number> = []) => ({
                     lane,
                     role,
                     position,
-                    isRadiant
+                    isRadiant,
+                    imp
                 },
                 pickBans {
                     heroId, 
